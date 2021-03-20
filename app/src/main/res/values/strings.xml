@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RapportFoodo</string>
+    <string name="welcome">Welcome to Rapport Foodo</string>
+    <string name="click">Click Photo</string>
+    <string name="upload">Add Photo</string>
+    <string name="check">Check Dish Info</string>
+    <string name="menu">Photo Action</string>
+    <string name="order">Order the Dish</string>
+    <string name="recipe">Get the Recipe</string>
+</resources>
