@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:id="@+id/second"
     android:layout_height="match_parent"
     android:background="@drawable/rapport_foodo_allscreens"
     tools:context=".SecondActivity">
@@ -24,7 +25,7 @@
     <Button
         android:id="@+id/buttonOrder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="126dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
