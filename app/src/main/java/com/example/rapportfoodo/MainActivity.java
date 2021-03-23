@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.example.rapportfoodo.R;
 import com.example.rapportfoodo.ml.Model;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.tensorflow.lite.support.image.ImageProcessor;
 import org.tensorflow.lite.support.image.TensorImage;
@@ -58,6 +59,8 @@ public class MainActivity extends Activity {
         context=this;
         recognise=findViewById(R.id.recognise);
         name=findViewById(R.id.recipe_name);
+
+
 
         btnSelect.setOnClickListener(new OnClickListener() {
             @Override

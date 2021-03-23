@@ -19,7 +19,6 @@ public class FirstFragment extends Fragment {
         super.onCreateView(inflater,container,savedInstanceState);
         View v= inflater.inflate(R.layout.fragment_first, container, false);
         recipe=v.findViewById(R.id.ordername);
-        d=new Data();
         String r=d.getName();
         recipe.setText(r);
         return v;

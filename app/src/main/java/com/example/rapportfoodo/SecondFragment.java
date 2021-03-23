@@ -23,6 +23,7 @@ public class SecondFragment extends Fragment {
     private TextView name,steps,ingredients;
     DatabaseReference reff;
     Data d;
+    Data obj;
     private String r;
 
 
@@ -33,8 +34,9 @@ public class SecondFragment extends Fragment {
         super.onCreateView(inflater,container,savedInstanceState);
         View v= inflater.inflate(R.layout.fragment_second, container, false);
         r=d.getName();
+       /*
         if(r.contains("Chocolate"))
-            r="Dessert";
+            r="dessert";
         if(r.equals("Noodles")||r.equals("Meat")||r.equals("Seafood")||r.equals("Soup"))
             r=r.toLowerCase();
         if(r.contains("Vegetable"))
@@ -42,14 +44,66 @@ public class SecondFragment extends Fragment {
         if(r.contains("Rice"))
             r="rice";
         if(r.contains("Egg"))
-            r="Egg";
+            r="egg";
         if(r.contains("French"))
             r="Fried";
 
+        */
+
         name=v.findViewById(R.id.name);
+        name.setText(r);
         steps=v.findViewById(R.id.steps);
         ingredients=v.findViewById(R.id.ingredients);
         Log.i("hello","tanishi"+r);
+        String na="";
+        if(r.equals("Noodles")) {
+            ingredients.setText(Data.noodles[1]);
+            steps.setText(Data.noodles[2]);
+        }
+        if(r.equals("Meat")){
+            ingredients.setText(Data.meat[1]);
+            steps.setText(Data.meat[2]);
+        }
+
+        if(r.equals("Seafood")){
+            ingredients.setText(Data.seafood[1]);
+            steps.setText(Data.seafood[2]);
+        }
+        if(r.equals("Soup")){
+            ingredients.setText(Data.soup[1]);
+            steps.setText(Data.soup[2]);
+        }
+        if(r.contains("Vegetable")) {
+            ingredients.setText(Data.vegetable[1]);
+            steps.setText(Data.vegetable[2]);
+        }
+        if(r.contains("Rice")){
+            ingredients.setText(Data.rice[1]);
+            steps.setText(Data.rice[2]);
+        }
+        if(r.contains("Egg")) {
+            ingredients.setText(Data.egg[1]);
+            steps.setText(Data.egg[2]);
+        }
+        if(r.contains("French")){
+            ingredients.setText(Data.fried[1]);
+            steps.setText(Data.fried[2]);
+        }
+        if(r.contains("Chocolate")){
+            ingredients.setText(Data.dessert[1]);
+            steps.setText(Data.dessert[2]);
+        }
+        if(r.equals("Bread")){
+            ingredients.setText(Data.bread[1]);
+            steps.setText(Data.bread[2]);
+        }
+        if(r.contains("Dairy")){
+            ingredients.setText(Data.dairy[1]);
+            steps.setText(Data.dairy[2]);
+        }
+
+
+        /*
         reff= FirebaseDatabase.getInstance().getReference("rapport-foodo-default-rtdb");
         reff.addValueEventListener(new ValueEventListener() {
             @Override
@@ -63,7 +117,7 @@ public class SecondFragment extends Fragment {
                     {
                         name.setText("Recipe");
                         ingredients.setText(map.get("Ingredients"));
-                        steps.setText(map.get("Instructions"));
+                       // steps.setText(map.get("Instructions"));
                         break;
                     }
                     }
@@ -74,6 +128,8 @@ public class SecondFragment extends Fragment {
 
             }
         });
+
+         */
         return v;
     }
 }

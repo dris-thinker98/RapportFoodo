@@ -14,9 +14,7 @@ import android.widget.TextView;
 public class SecondActivity extends AppCompatActivity {
     private TextView rec;
     private Button ord,inst;
-    FirstFragment firstFragment;
-    SecondFragment secondFragment;
-    public static final int intent=R.id.second;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,26 +30,19 @@ public class SecondActivity extends AppCompatActivity {
         Log.i("Sec",r);
         Data d=new Data();
         Data.setName(r);
-
+        Intent i2=new Intent(SecondActivity.this,ShowAcitivty.class);
         ord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firstFragment=new FirstFragment();
-                FragmentManager manager=getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction=manager.beginTransaction();
-                fragmentTransaction.add(intent,firstFragment);
-                fragmentTransaction.commit();
+                i2.putExtra("Case","1");
+                startActivity(i2);
             }
         });
         inst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                secondFragment=new SecondFragment();
-                FragmentManager manager=getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction=manager.beginTransaction();
-                fragmentTransaction.add(intent,secondFragment);
-                fragmentTransaction.commit();
-
+                i2.putExtra("Case","2");
+                startActivity(i2);
             }
         });
 
