@@ -26,7 +26,9 @@ public class SecondActivity extends AppCompatActivity {
 
         Intent i=getIntent();
         String r=i.getStringExtra("Recipe");
-        rec.setText(r);
+
+        rec.setText(Data.mainArray[MainActivity.index][0]);
+
         Log.i("Sec",r);
         Data d=new Data();
         Data.setName(r);

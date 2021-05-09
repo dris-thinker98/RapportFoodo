@@ -51,85 +51,21 @@ public class SecondFragment extends Fragment {
         */
 
         name=v.findViewById(R.id.name);
-        name.setText(r);
+        name.setText(Data.mainArray[MainActivity.index][0]);
         steps=v.findViewById(R.id.steps);
         ingredients=v.findViewById(R.id.ingredients);
-        Log.i("hello","tanishi"+r);
+//        Log.i("hello","tanishi"+r);
         String na="";
-        if(r.equals("Noodles")) {
-            ingredients.setText(Data.noodles[1]);
-            steps.setText(Data.noodles[2]);
-        }
-        if(r.equals("Meat")){
-            ingredients.setText(Data.meat[1]);
-            steps.setText(Data.meat[2]);
-        }
 
-        if(r.equals("Seafood")){
-            ingredients.setText(Data.seafood[1]);
-            steps.setText(Data.seafood[2]);
-        }
-        if(r.equals("Soup")){
-            ingredients.setText(Data.soup[1]);
-            steps.setText(Data.soup[2]);
-        }
-        if(r.contains("Vegetable")) {
-            ingredients.setText(Data.vegetable[1]);
-            steps.setText(Data.vegetable[2]);
-        }
-        if(r.contains("Rice")){
-            ingredients.setText(Data.rice[1]);
-            steps.setText(Data.rice[2]);
-        }
-        if(r.contains("Egg")) {
-            ingredients.setText(Data.egg[1]);
-            steps.setText(Data.egg[2]);
-        }
-        if(r.contains("French")){
-            ingredients.setText(Data.fried[1]);
-            steps.setText(Data.fried[2]);
-        }
-        if(r.contains("Chocolate")){
-            ingredients.setText(Data.dessert[1]);
-            steps.setText(Data.dessert[2]);
-        }
-        if(r.equals("Bread")){
-            ingredients.setText(Data.bread[1]);
-            steps.setText(Data.bread[2]);
-        }
-        if(r.contains("Dairy")){
-            ingredients.setText(Data.dairy[1]);
-            steps.setText(Data.dairy[2]);
-        }
-
-
-        /*
-        reff= FirebaseDatabase.getInstance().getReference("rapport-foodo-default-rtdb");
-        reff.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snap : snapshot.getChildren()) {
-                    Log.i("Inside"," Firebase");
-                    //GenericTypeIndicator<Map<String, String>> genericTypeIndicator = new GenericTypeIndicator<Map<String, String>>() {};
-                    Map<String, String> map = (Map<String, String>) snap.getValue();
-                    Log.i("hello","String"+map.get("Recipe"));
-                    if(map.get("Recipe").equals(r))
-                    {
-                        name.setText("Recipe");
-                        ingredients.setText(map.get("Ingredients"));
-                       // steps.setText(map.get("Instructions"));
-                        break;
-                    }
-                    }
+        int index = 0;
+        for(int i=0;i<Data.mainArray.length;i++){
+            if(r.equals(Data.dishNames[i])){
+                index = i;
+                break;
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-         */
+        }
+        ingredients.setText(Data.mainArray[index][2]);
+        steps.setText(Data.mainArray[index][3]);
         return v;
     }
 }

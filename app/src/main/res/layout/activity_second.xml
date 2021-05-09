@@ -12,41 +12,73 @@
     <TextView
         android:id="@+id/textViewDishName"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="10dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
         android:gravity="center"
+        android:layout_marginTop="50dp"
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="24sp" />
 
-    <Button
-        android:id="@+id/buttonOrder"
-        android:layout_width="match_parent"
-        android:layout_height="126dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_weight="1"
-        android:backgroundTint="@color/buttonTint"
-        android:text="@string/order" />
-
-    <Button
-        android:id="@+id/buttonGetRecipe"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="200dp"
-        android:layout_weight="1"
-        android:backgroundTint="@color/buttonTint"
-        android:text="@string/recipe" />
+        android:orientation="horizontal"
+        android:layout_marginTop="60dp">
+
+        <ImageView
+            android:id="@+id/addContact"
+            android:layout_width="177dp"
+            android:layout_height="137dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="21dp"
+            android:src="@drawable/order"></ImageView>
+
+        <Button
+            android:id="@+id/buttonOrder"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/customborder"
+            android:text="Order Dish" />
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="177dp"
+            android:layout_height="137dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="21dp"
+            android:src="@drawable/order1"></ImageView>
+
+        <Button
+            android:id="@+id/buttonGetRecipe"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/customborder"
+            android:text="Get Recipe" />
+
+    </LinearLayout>
 
 
 </LinearLayout>

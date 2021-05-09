@@ -49,6 +49,7 @@ public class MainActivity extends Activity {
     private String reci="";
     private double max=0.0,score=0.0;
     private int flag=0;
+    public static int index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -188,87 +189,40 @@ public class MainActivity extends Activity {
             TensorImage image = TensorImage.fromBitmap(thumbnail);
             Model.Outputs outputs = model.process(image);
             List<Category> probability = outputs.getProbabilityAsCategoryList();
-            recognise.setVisibility(View.VISIBLE);
-            recognise.setText(probability.toString());
+//            recognise.setVisibility(View.VISIBLE);
+//            recognise.setText(probability.toString());
             model.close();
 
-            for(int i=0;i<11;i++)
+            for(int i=0;i<25;i++)
             {
                 String s=probability.get(i).toString();
-                String[] arr=s.split("score=");
-                String[] a=arr[1].split("\\)>");
-                Log.i("hello", "String" + a[0]);
-                score = Float.parseFloat(a[0]);
-
-                //1
-                if(s.contains("bread") && max<score){
+                String[] arr=s.split(" ");
+                String a=arr[2].replace("(score=","");
+                String b=a.replace(")>","");
+                score = Float.parseFloat(b);
+                Log.i("hello", "String"+arr[1]+score);
+                if(max<score) {
+                    max = score;
+                    reci = arr[1];
                     flag=1;
-                    max=score;
-                    reci="Bread";
                 }
-                //2
-                if(s.contains("dessert") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Chocolate Cake";
-                }
-                //3
-                if(s.contains("meat") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Meat";
-                }
-                //4
-                if(s.contains("egg") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Fried Egg";
-                }
-                //5
-                if(s.contains("rice") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Fried Rice";
-                }
-                //6
-                if(s.contains("noodles") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Noodles";
-                }
-                //7
-                if(s.contains("seafood") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Seafood";
-                }
-                //8
-                if(s.contains("soup") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Soup";
-                }
-                //9
-                if(s.contains("vegetable") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Vegetable & Fruits";
-                }
-                if(s.contains("dairy") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Dairy";
-                }
-                if(s.contains("fried") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="French Fries";
-                }
-
             }
             if(flag==1){
                 name.setVisibility(View.VISIBLE);
-                name.setText("Recognised as-"+reci);
+//                name.setText("Recognised as-"+reci);
+                name.setVisibility(View.VISIBLE);
+
+                reci = reci.replace("\"","");
+
+                for(int i=0;i<Data.mainArray.length;i++){
+                    System.out.println(reci+" "+Data.dishNames[1]+" "+reci.equals(Data.dishNames[i]));
+                    if(reci.equals(Data.dishNames[i])){
+                        index = i;
+                        break;
+                    }
+                }
+                name.setText("Recognised as :- "+Data.mainArray[index][0]);
+                btnCheck.setVisibility(View.VISIBLE);
             }
 
         }
@@ -298,86 +252,37 @@ public class MainActivity extends Activity {
             TensorImage image = TensorImage.fromBitmap(bm);
             Model.Outputs outputs = model.process(image);
             List<Category> probability = outputs.getProbabilityAsCategoryList();
-            recognise.setVisibility(View.VISIBLE);
-            recognise.setText(probability.toString());
+//            recognise.setVisibility(View.VISIBLE);
+//            recognise.setText(probability.toString());
             model.close();
 
-            for(int i=0;i<11;i++) {
+            for(int i=0;i<25;i++) {
                 String s = probability.get(i).toString();
-                String[] arr = s.split("score=");
-                String[] a=arr[1].split("\\)>");
-                Log.i("hello", "String" + a[0]);
-                score = Float.parseFloat(a[0]);
-
-                //1
-                if(s.contains("bread") && max<score){
-                    flag=1;
-                    max=score;
-                    reci="Bread";
+                String[] arr = s.split(" ");
+                String a = arr[2].replace("(score=", "");
+                String b = a.replace(")>", "");
+                score = Float.parseFloat(b);
+                Log.i("hello", "String" + arr[1] + score);
+                if (max < score) {
+                    max = score;
+                    reci = arr[1];
+                    flag = 1;
                 }
-                //2
-                if(s.contains("dessert") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Chocolate Cake";
-                }
-                //3
-                if(s.contains("meat") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Meat";
-                }
-                //4
-                if(s.contains("egg") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Fried Egg";
-                }
-                //5
-                if(s.contains("rice") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Fried Rice";
-                }
-                //6
-                if(s.contains("noodles") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Noodles";
-                }
-                //7
-                if(s.contains("seafood") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Seafood";
-                }
-                //8
-                if(s.contains("soup") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Soup";
-                }
-                //9
-                if(s.contains("vegetable") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Vegetable & Fruits";
-                }
-                if(s.contains("dairy") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="Dairy";
-                }
-                if(s.contains("fried") && max<score){
-                    max=score;
-                    flag=1;
-                    reci="French Fries";
-                }
-
             }
             if(flag==1){
                 name.setVisibility(View.VISIBLE);
-                name.setText("Recognised as-"+reci);
+//                name.setText("Recognised as-"+reci);
+                name.setVisibility(View.VISIBLE);
+                reci = reci.replace("\"","");
+                for(int i=0;i<Data.mainArray.length;i++){
+                    System.out.println(reci+" "+Data.dishNames[1]+" "+reci.equals(Data.dishNames[i]));
+                    if(reci.equals(Data.dishNames[i])){
+                        index = i;
+                        break;
+                    }
+                }
+                name.setText("Recognised as :- "+Data.mainArray[index][0]);
+                btnCheck.setVisibility(View.VISIBLE);
             }
         }
         catch(IOException e){
